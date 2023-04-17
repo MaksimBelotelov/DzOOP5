@@ -16,22 +16,35 @@ public class AccountController {
         return newAccount.getId();
     }
 
+    public void deleteAccount(Account account) {
+        accountList.remove(account);
+    }
+
     public void showMeMyAccounts(User user){
-        System.out.println("Ваши счета: ");
-        if(user.getAccountIds().isEmpty()){
-            System.out.println("У вас нет счетов.");
-        }
-        else {
-            for (Integer accountNumber : user.getAccountIds()) {
-                for (Account account : accountList) {
-                    if (accountNumber == account.getId()) {
-                        System.out.println("\nНомер счёта: " + account.getId());
-                        System.out.println("Баланс счёта: " + account.getBalance());
-                        break;
-                    }
+        for (Integer accountNumber : user.getAccountIds()) {
+            for (Account account : accountList) {
+                if (accountNumber == account.getId()) {
+                    System.out.println("Номер счёта: " + account.getId());
+                    System.out.println("Баланс счёта: " + account.getBalance() + "\n");
+                    break;
                 }
             }
         }
+    }
+    public Account findAccountByNumber(Integer numberOfAccount) {
+        for(Account account: accountList) {
+            if(!accountList.isEmpty() && account.getId() == numberOfAccount)
+                return account;
+        }
+        System.out.println("Счёт с таким номером не найден");
+        return null;
+    }
+
+    public boolean isMyAccount(User user, Account account) {
+        if(account != null)
+            return user.getAccountIds().contains(account.getId());
+        else
+            return false;
     }
 
     public void saveAccountAndExit() {

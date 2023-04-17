@@ -10,7 +10,7 @@ public class Account {
 
     public Account(Integer id, Double balance){
         this.id = id;
-        this.balance = 0.0;
+        this.balance = balance;
     }
 
     public Account() {

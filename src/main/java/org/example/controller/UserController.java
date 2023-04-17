@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.model.Account;
 import org.example.model.User;
 import org.example.repository.UserRepo;
 
@@ -68,7 +69,7 @@ public class UserController {
         for (int i = 0; i < s.length(); i++)
         {
             char c = s.charAt(i);
-            if (!(c >= 'A' && c <= 'Z') && !(c >= 'a' && c <= 'z')) {
+            if (!(c >= 'А' && c <= 'Я') && !(c >= 'а' && c <= 'я')) {
                 return false;
             }
         }
@@ -87,6 +88,14 @@ public class UserController {
             }
         }
         return true;
+    }
+
+    public User whoIsOwner(Account account){
+        for(User user: usersList){
+            if(user.getAccountIds().contains(account.getId()))
+                return user;
+        }
+        return null;
     }
 }
 

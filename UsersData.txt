@@ -1,10 +1,10 @@
-maksim@mail.ru
-Belotelov
-Maksim
-qwerty
-0, 1, 2
 petr@mail.ru
 Petrov
 Petr
 qwerty
 
+maksim@mail.ru
+Белотелов
+Максим
+qwerty
+0, 1
